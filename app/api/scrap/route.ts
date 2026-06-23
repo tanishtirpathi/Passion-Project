@@ -1,3 +1,4 @@
+import { prisma } from "@/lib/prisma";
 import FirecrawlApp from "@mendable/firecrawl-js";
 
 export async function POST(request: Request) {
@@ -23,6 +24,13 @@ export async function POST(request: Request) {
       },
     });
 
+    const monitor = await prisma.monitor.create({
+      data: {
+        userId: 123,
+        url: url
+      }
+    });
+    console.log("Monitor created:", monitor);
     return Response.json({
       success: true,
       pages: crawl.data?.length || 0,
