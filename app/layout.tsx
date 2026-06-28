@@ -30,12 +30,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-     <ClerkProvider>
+  
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
-    </html></ClerkProvider>
+       <ClerkProvider>  <body className="min-h-full flex flex-col">{children}</body></ClerkProvider>
+    </html>
   );
 }
